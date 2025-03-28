@@ -20,4 +20,23 @@ document.addEventListener('DOMContentLoaded', function() {
   // 4. Display the count on the webpage
 
   // your code here
+
+  // Get the value of the 'count' cookie
+  let count = getCookie('count');
+
+  // If the cookie exists, increment the value and update the cookie
+  if (count) {
+    count = parseInt(count) + 1;
+  } else {
+    // If the cookie does not exist, create it and set the value to 1
+    count = 1;
+  }
+
+  // Update the cookie with the new count
+  setCookie('count', count, 7); // Cookie valid for 7 days
+
+  // Display the count on the webpage
+  let counterDisplay = document.createElement('p');
+  counterDisplay.textContent = `Page Visits: ${count}`;
+  document.body.appendChild(counterDisplay);
 });
